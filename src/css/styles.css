@@ -23,3 +23,42 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+img {
+  display: block;
+}
+
+.gallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.gallery-image {
+  display: block;
+  width: 360px;
+  height: 200px;
+  transition: transform 0.3s;
+}
+
+.gallery-image:hover,
+.gallery-image:focus {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.modal {
+  background-color: #2e2f42cc;
+}
+
+.modal-img {
+  width: 1440px;
+  height: 696px;
+  top: 204px;
+  left: 2404px;
+  gap: 0px;
+  opacity: 0px;
+}
