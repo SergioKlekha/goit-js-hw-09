@@ -66,47 +66,29 @@ const images = [
 
 const container = document.querySelector('.gallery');
 container.insertAdjacentHTML('beforeend', createMarkup(images));
-container.addEventListener('click', openModalClick);
+
 function createMarkup(arr) {
   return arr
     .map(
       photo => `
-            <li class="gallery-item">
-                <a class="gallery-link" href="${photo.original}">
-                    <img
-                        class="gallery-image"
-                        src="${photo.preview}"
-                        data-source="${photo.original}"
-                        alt="${photo.description}"
-                    />
-                </a>
-            </li>`
+        <li class="gallery-item">
+          <a class="gallery-link" href="${photo.original}">
+            <img
+              class="gallery-image"
+              src="${photo.preview}"
+              alt="${photo.description}"
+            />
+          </a>
+        </li>`
     )
     .join('');
 }
 
-function openModalClick(event) {
-  event.preventDefault();
-  if (event.target === event.currentTarget) {
-    return;
-  }
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-  const sourse = event.target.getAttribute('data-source');
-  const description = event.target.alt;
-
-  const instance = basicLightbox.create(
-    `<div class="modal">
-                <img class="modal-img" src="${sourse}" alt="${description}" width: 1440px;
-    height: 696px;>
-        </div>`,
-
-    {
-      onShow: instance => {
-        instance.element().querySelector('.modal').onclick = () => {
-          instance.close();
-        };
-      },
-    }
-  );
-  instance.show();
-}
+let gallery = new SimpleLightbox('.gallery a', {
+  navText: ['&#5176;', '&#5171;'],
+  captionsData: 'alt',
+  captionDelay: 250,
+});
