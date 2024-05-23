@@ -21,6 +21,8 @@ function returnInput() {
     return;
   }
 
+  formData = data;
+
   const { email, message } = form.elements;
   email.value = data.email;
   message.value = data.message;
@@ -36,4 +38,5 @@ function sendData(event) {
   localStorage.removeItem('feedback-form-state');
   console.log({ email: email.value, message: message.value });
   form.reset();
+  formData = { email: '', message: '' };
 }
