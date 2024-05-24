@@ -4,7 +4,7 @@ form.addEventListener('input', handleInput);
 form.addEventListener('submit', sendData);
 returnInput();
 
-const formData = {
+let formData = {
   email: '',
   message: '',
 };
